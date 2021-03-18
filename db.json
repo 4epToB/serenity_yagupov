@@ -1,11 +1,8 @@
 {
-    "posts": [
+    "messages": [
       {
-        "id": 1,
-        "title": "hello"
+        "name": "Petr",
+        "message": "hello"
       }
-    ],
-    "profile": {
-      "name": "typicode"
-    }
+    ]
   }
