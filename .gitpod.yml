@@ -4,9 +4,10 @@ ports:
   - port: 3000
     onOpen: ignore
 tasks:
-  - init: npm install
-    command: npm i
-  - command: npm i -g json-server
+  - before: npm i
+    init: npm i -g json-server
+    command: json-server --watch db.json --port 3000 --no-cors
+  - command: npm run dev
 vscode:
   extensions:
     - octref.vetur@0.23.0:TEzauMObB6f3i2JqlvrOpA==
