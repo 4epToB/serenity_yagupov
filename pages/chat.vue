@@ -2,13 +2,14 @@
   <div class="mainwrap">
       <div class="chatwrap">
           <div class="textarea">
+<!--             <span>{{messages}}</span> -->
             <b-list-group>
                 <b-list-group-item variant="light" v-for="(message,index) in messages"
                 :key="index"
                 >
                   {{message.time}}|
-                  <span style="font-weight: 900">{{message.username}}</span>: 
-                  <span >{{message.text}}</span>
+                  <span style="font-weight: 900">{{message.name}}</span>: 
+                  <span >{{message.message}}</span>
                 </b-list-group-item>
             </b-list-group>   
           </div>
@@ -16,10 +17,10 @@
             <b-form-input 
               type="text" 
               id="myInput" 
-              v-model="textMessage" 
+              v-model="message" 
               autofocus 
               ></b-form-input>
-            <b-button variant="dark" id="myBtn" @click="sendMessage">Отправить</b-button>
+            <b-button variant="dark" id="myBtn" @click="send">Отправить</b-button>
           </div>
         </div>
   </div>
@@ -32,26 +33,39 @@ export default {
         username:"",
         visible:false,
         messages:[],
-        textMessage:"",
+        message:"",
 
 
     }
   },
   methods:{
+    async send(){
+      const requestOptions = {
+        headers: { "Content-Type": "application/json" },
+        /* body: JSON.stringify({ username: 'example',message : 'this.message'}) */
+      };
+      const response = await this.$axios.post('/my-api/', JSON.stringify({ username: 'example',message : 'this.message'}),requestOptions)
+      /* this.messages = response */
+      /* const data = await response.json();  */ 
+
+    }
   },
   computed:{
 
   },
-  updated: function () {
+  updated() {
     this.$nextTick(function () {
       var myDiv = document.querySelector(".textarea")
       myDiv.scrollTop = myDiv.scrollHeight 
     })
   },
-  mounted: function () {
-    },
+  /* async beforeMount() {
+    const messages = await this.$axios.$get('http://localhost:3000/messages')
+    this.messages = messages
+  }, */
 
 }
+
 </script>
 
 <style>

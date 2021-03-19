@@ -1,3 +1,4 @@
+/* const baseURL = process.env.API_BASE_URL || 'http://localhost:3000' */
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -34,8 +35,22 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
-
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/my-api/': { target: 'http://localhost:3000/messages', pathRewrite: {'^/my-api/': ''} },
+  },
+  server: {
+    port: 3001,
+    host: '0.0.0.0'
+  },
+  axios: {
+    // proxy: true
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
