@@ -6,7 +6,7 @@ ports:
 tasks:
   - init: npm install
     command: npm i
-  - command: i -g json-server
+  - command: npm i -g json-server
 vscode:
   extensions:
     - octref.vetur@0.23.0:TEzauMObB6f3i2JqlvrOpA==
