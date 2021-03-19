@@ -49,7 +49,7 @@ export default {
 
     },
     async refresh(){
-      const messages = await this.$axios.$get('http://localhost:3000/messages')
+      const messages = await this.$axios.$get('/my-api/')
       this.messages = messages
     }
   },
