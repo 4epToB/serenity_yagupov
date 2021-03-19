@@ -42,7 +42,7 @@ export default {
     proxy: true
   },
   proxy: {
-    '/my-api/': { target: 'http://localhost:3000/messages', pathRewrite: {'^/my-api/': ''} },
+    '/my-api/': { target: 'https://3000-amaranth-minnow-wc1uzdrz.ws-eu03.gitpod.io/messages', pathRewrite: {'^/my-api/': ''} },
   },
   server: {
     port: 3001,
