@@ -25,7 +25,7 @@ export default {
   methods:{
     login(){
           this.visible=!this.visible
-          this.$router.push('/chat')
+          this.$router.push({ name: "chat", params: { username: this.username } })
     },
   }
 

@@ -2,13 +2,12 @@
   <div class="mainwrap">
       <div class="chatwrap">
           <div class="textarea">
-<!--             <span>{{messages}}</span> -->
             <b-list-group>
                 <b-list-group-item variant="light" v-for="(message,index) in messages"
                 :key="index"
                 >
                   {{message.time}}|
-                  <span style="font-weight: 900">{{message.name}}</span>: 
+                  <span style="font-weight: 900">{{message.username}}</span>: 
                   <span >{{message.message}}</span>
                 </b-list-group-item>
             </b-list-group>   
@@ -42,12 +41,16 @@ export default {
     async send(){
       const requestOptions = {
         headers: { "Content-Type": "application/json" },
-        /* body: JSON.stringify({ username: 'example',message : 'this.message'}) */
       };
-      const response = await this.$axios.post('/my-api/', JSON.stringify({ username: 'example',message : 'this.message'}),requestOptions)
-      /* this.messages = response */
-      /* const data = await response.json();  */ 
+      const response = await this.$axios.post('/my-api/', JSON.stringify({ username: this.username ,message : this.message}),requestOptions)
+      this.message=''
+      console.log(response.data)
+      /* this.messages.push(response.data) */
 
+    },
+    async refresh(){
+      const messages = await this.$axios.$get('http://localhost:3000/messages')
+      this.messages = messages
     }
   },
   computed:{
@@ -59,10 +62,26 @@ export default {
       myDiv.scrollTop = myDiv.scrollHeight 
     })
   },
-  /* async beforeMount() {
-    const messages = await this.$axios.$get('http://localhost:3000/messages')
-    this.messages = messages
-  }, */
+  created() {
+
+    this.username=this.$route.params.username
+
+    setInterval(function () {
+			this.refresh()
+		}.bind(this), 1500)
+   
+    
+    
+  },
+  mounted(){
+    var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("myBtn").click();
+      }
+    });
+  }
 
 }
 

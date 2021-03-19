@@ -1,8 +1,14 @@
 {
-    "messages": [
-      {
-        "name": "Petr",
-        "message": "hello"
-      }
-    ]
-  }
+  "messages": [
+    {
+      "id": 0,
+      "username": "Petr",
+      "message": "hello"
+    },
+    {
+      "username": "Коля",
+      "message": "Че кого",
+      "id": 1
+    }
+  ]
+}
