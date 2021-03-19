@@ -1,7 +1,14 @@
+ports:
+  - port: 3001
+    onOpen: open-preview
+  - port: 3000
+    onOpen: ignore
 tasks:
-  - command: >
-    npm install &&
-    npm i -g json-server &&
-    json-server --watch db.json --port 3000 --no-cors
-  - command: npm run dev
-  openMode: split-right
+  - init: yarn install
+    command: yarn dev
+  - command: >echo split && yarn add json-server &&  json-server --watch db.json --port 3000 --no-cors
+    openMode: split-right
+    name: split terminal
+vscode:
+  extensions:
+    - octref.vetur@0.23.0:TEzauMObB6f3i2JqlvrOpA==
