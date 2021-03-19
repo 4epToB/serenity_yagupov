@@ -1,9 +1,11 @@
   
 tasks:
-   -command: >
+  -init: npm install
+   command: >
       npm i -g json-server &&
       json-server --watch db.json --port 3000
-  -command: >
-      npm install 
-      npm run dev
+  -init: npm install
+   command: >
+     npm install 
+    npm run dev 
     
