@@ -1,4 +1,7 @@
-/* const baseURL = process.env.API_BASE_URL || 'http://localhost:3000' */
+const myurl=process.env.GITPOD_WORKSPACE_URL.split('//')
+const apiurl=myurl[0]+'//3000-'+myurl[1]
+console.log("!!apiurl=",apiurl)
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,16 +46,14 @@ export default {
     proxy: true
   },
   proxy: {
-    '/my-api/': { target: 'https://3000-amaranth-minnow-wc1uzdrz.ws-eu03.gitpod.io/messages', pathRewrite: {'^/my-api/': ''} },
+    '/messages': apiurl
   },
   server: {
     port: 3001,
     host: '0.0.0.0'
   },
-  axios: {
-    // proxy: true
-  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
 }
+
