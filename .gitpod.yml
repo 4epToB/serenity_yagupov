@@ -4,9 +4,12 @@ ports:
   - port: 3000
     onOpen: ignore
 tasks:
-  - before: npm i
-    command: npm i -g json-server && json-server --watch db.json --port 3000 --no-cors
-  - command: npm run dev
+  - name: json
+    before: npm i
+    command: npm i -g json-server && json-server --watch db.json --port 3000 --no-cors &&  gp sync-done bundle
+  - name: nuxt
+    init: gp sync-await bundle
+    command: npm run dev
 vscode:
   extensions:
     - octref.vetur@0.23.0:TEzauMObB6f3i2JqlvrOpA==
