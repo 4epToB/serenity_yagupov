@@ -9,7 +9,7 @@
         <b-button @click="login" variant="success">Вход</b-button>
       </div>
 
-    </div>    
+    </div>
   </div>
 </template>
 
@@ -24,8 +24,12 @@ export default {
   },
   methods:{
     login(){
-          this.visible=!this.visible
-          this.$router.push({ name: "chat", params: { username: this.username } })
+      if(this.username){
+        this.visible=!this.visible
+        this.$router.push({ name: "chat", params: { username: this.username } })
+      } else{
+        alert('Введите имя')
+      }
     },
   }
 

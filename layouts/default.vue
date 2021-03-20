@@ -26,7 +26,7 @@ html {
 
 body{
     margin: 0px;
-    background-color:#82ccdd ;
+    background-color:#d3dbdd ;
 }
 *,
 *::before,
