@@ -5,8 +5,8 @@ ports:
     onOpen: ignore
 tasks:
   - name: json
-    before: npm i
-    command: npm i -g json-server && json-server --watch db.json --port 3000 --no-cors &&  gp sync-done bundle
+    init: npm i &&  gp sync-done bundle
+    command: npm i -g json-server && json-server --watch db.json --port 3000 --no-cors 
   - name: nuxt
     init: gp sync-await bundle
     command: npm run dev
