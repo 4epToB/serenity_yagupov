@@ -5,8 +5,7 @@ ports:
     onOpen: ignore
 tasks:
   - before: npm i
-    init: npm i -g json-server
-    command: json-server --watch db.json --port 3000 --no-cors
+    command: npm i -g json-server && json-server --watch db.json --port 3000 --no-cors
   - command: npm run dev
 vscode:
   extensions:
