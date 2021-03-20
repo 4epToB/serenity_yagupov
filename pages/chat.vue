@@ -38,7 +38,6 @@ export default {
   },
   methods:{
     async send(){
-<<<<<<< HEAD
       if(this.message){
         const requestOptions = {
           headers: { "Content-Type": "application/json" },
@@ -48,16 +47,6 @@ export default {
       } else{
         alert('Введите сообщение')
       }
-=======
-      const requestOptions = {
-        headers: { "Content-Type": "application/json" },
-      };
-      const response = await this.$axios.post('/messages', JSON.stringify({ username: this.username ,message : this.message}),requestOptions)
-      this.message=''
-      console.log(response.data)
-      /* this.messages.push(response.data) */
-
->>>>>>> ccaca7a3c6fe85441b582a440878d9444fb5e8d9
     },
     async refresh(){
       const messages = await this.$axios.$get('/messages')
